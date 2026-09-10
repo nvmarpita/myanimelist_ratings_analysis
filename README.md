@@ -1,1 +1,1 @@
-# myanimelist_atings_analysis
+# myanimelist_atings_analysis👩‍💻
