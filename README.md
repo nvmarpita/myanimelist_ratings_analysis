@@ -1,5 +1,5 @@
 # myanimelist_ratings_analysis👩‍💻
-## Overview: 
+## 🇯🇵Overview: 
 Sourced from MyAnimeList — the go-to hub for anime fans and one of the richest community-driven databases in the space — this dataset captures the full personality of each title: how it's identified, what it's about, who made it, how audiences rated and embraced it, and when it aired. It's less a spreadsheet and more a snapshot of anime as both art and cultural phenomenon.
 
 ## 📁 Dataset:
@@ -80,6 +80,48 @@ Result: 6.38 overall average
 
 Interpretation: here `Award Winning` at (7.29) tops from other genre  but this reflects prior recognition rather than genre content, so it's not treated as a meaningful genre-level finding. `Mystery` at (6.99),and `Suspense` at (6.96) are actual genre  hits over other genre, my hypothesis about `Slice of Life` 6.47 was wrong it ranks 16 out of 21, in overall average but `Suspense` ranks third top making my half hypothesis true.
 
+❔Question: Does Studios matter — do certain studios' anime average higher scores?
+
+
+
+Hypothesis: I expected Studio to have a real effect on Score, since some studios likely produce better animation, storytelling, and have stronger reputations than others.
+
+Method: Group comparison, `explode()`
+
+
+
+Result: Top score 7.63 (Animation Do), bottom score 4.82 (Liberty Animation Studio) — a gap of 2.81, nearly half the overall average of 6.38.
+
+
+Interpretation: This is a large gap compared to Episodes (r=0.08) and Duration (r=0.31), suggesting Studio has a real effect on Score. Well-known studios — MAPPA (7.16), ufotable (7.21), Studio Ghibli (6.78) all scored above average, though none ranked in the very top. This supports my hypothesis, though I can't confirm why without deeper analysis into what makes those top studios perform better.
+
+
+-----------------------------------------------**Regression**---------------------------------------------------
+
+
+
+❔Question: Do Episodes and Duration_minute, together, predict Score and how much does each one matter once you account for the other?
+
+Method: Multiple Linear Regression (OLS, via `statsmodels`); predictors: Episodes, Duration_minute
+
+Result: R² = 0.107. Both effects real but small; together they explain 10.7% of Score.
+
+
+
+Together, Episodes and Duration explain about 10.7% of the variation in Score. This is a low number, meaning these two factors don't explain most of why anime scores differ. This matches my earlier finding that Episodes had almost no effect and Duration had only a weak effect.
+
+
+
+❔Question:Does adding Type (TV/Movie/Music/OVA/ONA/Special) to the model improve how much of Score it explains — and does Type matter once Episodes and Duration are already accounted for?
+
+Method: Multiple Linear Regression (OLS, via `statsmodels`) predictors: Episodes, Duration_minute, and Type; TV as baseline category
+
+Result: R² = 0.246. Type added real explanatory power (R² roughly doubled), and in the process, Episodes' earlier effect turned out to be insignificant (p=0.477) — it wasn't a real independent effect after all
+
+Adding Type to the model raised R² from 0.107 to 0.246, meaning the model now explains about 25% of Score's variation, up from about 10% before. This is still a minority of what drives Score about 75% remains unexplained but adding Type clearly improved the model. Once Type was included, Episodes' effect became statistically insignificant (p = 0.477, compared to p < 0.001 before), suggesting its earlier weak correlation wasn't a real independent effect it was likely picking up on the fact that TV series tend to have more episodes than Movies, which also happen to score higher. Every Type category scored lower than TV (the baseline), with Movie showing the largest gap (1.06 points) and Special showing the smallest (0.43 points)
+
 ❔Question: 
+
+
 
 
