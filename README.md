@@ -53,7 +53,7 @@ positive nor negative. This supports my hypothesis: episode count doesn't have a
 Hypothesis: i'm not expecting any correlation between duration and score as short duration movie title has also been hit mostly.
 
 
-Method: Pearson correlation via.corr()
+Method: Pearson correlation via.`corr()`
 
 
 Result: r = 0.31
@@ -86,7 +86,7 @@ Interpretation: here `Award Winning` at (7.29) tops from other genre  but this r
 
 Hypothesis: I expected Studio to have a real effect on Score, since some studios likely produce better animation, storytelling, and have stronger reputations than others.
 
-Method: Group comparison, `explode()`
+Method: Group comparison via `explode()`, filtered to studios with 10+ anime to avoid single-title averages skewing results.
 
 
 
@@ -114,7 +114,7 @@ Interpretation: Together, Episodes and Duration explain about 10.7% of the varia
 
 Method: Multiple Linear Regression (OLS, via `statsmodels`) predictors: Episodes, Duration_minute, and Type; TV as baseline category
 
-Result: R² = 0.246. Type added real explanatory power (R² roughly doubled), and in the process, Episodes' earlier effect turned out to be insignificant (p=0.477) it wasn't a real independent effect after all
+Result: R² = 0.246. Type added real explanatory power (R² roughly doubled), and in the process, Episodes' earlier effect turned out to be insignificant (p=0.477) it wasn't a real independent effect after all.
 
 Interpretation: Adding Type to the model raised R² from 0.107 to 0.246, meaning the model now explains about 25% of Score's variation, up from about 10% before. This is still a minority of what drives Score about 75% remains unexplained but adding Type clearly improved the model. Once Type was included, Episodes' effect became statistically insignificant (p = 0.477, compared to p < 0.001 before), suggesting its earlier weak correlation wasn't a real independent effect it was likely picking up on the fact that TV series tend to have more episodes than Movies, which also happen to score higher. Every Type category scored lower than TV (the baseline), with Movie showing the largest gap (1.06 points) and Special showing the smallest (0.43 points)
 
@@ -128,11 +128,11 @@ reasoned prediction: I expected Type to add meaningful explanatory power, since 
 Result: R²=0.253. basically unchanged.
 
 
-Interpretation: R² moved from 0.246 to 0.253, meaning Genre added very little beyond what Type already explained. Mystery and Suspense both had p-values of 0.00 and positive coefficients, meaning genre content adds a real effect on Score, independent of format and length
+Interpretation: R² moved from 0.246 to 0.253, meaning Genre added very little beyond what Type already explained. `Mystery` and `Suspense` both had p-values of 0.00 and positive coefficients, meaning genre content adds a real effect on Score, independent of format and length.
 
 
 
-reasoned prediction: I expected Mystery and Suspense to remain significant predictors even after controlling for Type and Duration, since my earlier genre analysis showed both scoring above average independent of format
+reasoned prediction: I expected `Mystery` and `Suspense` to remain significant predictors even after controlling for Type and Duration, since my earlier genre analysis showed both scoring above average independent of format
 
 
 
