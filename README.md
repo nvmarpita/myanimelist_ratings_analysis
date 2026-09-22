@@ -96,9 +96,7 @@ Result: Top score 7.63 (Animation Do), bottom score 4.82 (Liberty Animation Stud
 Interpretation: This is a large gap compared to Episodes (r=0.08) and Duration (r=0.31), suggesting Studio has a real effect on Score. Well-known studios — MAPPA (7.16), ufotable (7.21), Studio Ghibli (6.78) all scored above average, though none ranked in the very top. This supports my hypothesis, though I can't confirm why without deeper analysis into what makes those top studios perform better.
 
 
------------------------------------------------**Regression**---------------------------------------------------
-
-
+### Regression:
 
 ❔Question: Do Episodes and Duration_minute, together, predict Score and how much does each one matter once you account for the other?
 
@@ -108,7 +106,7 @@ Result: R² = 0.107. Both effects real but small; together they explain 10.7% of
 
 
 
-Together, Episodes and Duration explain about 10.7% of the variation in Score. This is a low number, meaning these two factors don't explain most of why anime scores differ. This matches my earlier finding that Episodes had almost no effect and Duration had only a weak effect.
+Interpretation: Together, Episodes and Duration explain about 10.7% of the variation in Score. This is a low number, meaning these two factors don't explain most of why anime scores differ. This matches my earlier finding that Episodes had almost no effect and Duration had only a weak effect.
 
 
 
@@ -116,11 +114,25 @@ Together, Episodes and Duration explain about 10.7% of the variation in Score. T
 
 Method: Multiple Linear Regression (OLS, via `statsmodels`) predictors: Episodes, Duration_minute, and Type; TV as baseline category
 
-Result: R² = 0.246. Type added real explanatory power (R² roughly doubled), and in the process, Episodes' earlier effect turned out to be insignificant (p=0.477) — it wasn't a real independent effect after all
+Result: R² = 0.246. Type added real explanatory power (R² roughly doubled), and in the process, Episodes' earlier effect turned out to be insignificant (p=0.477) it wasn't a real independent effect after all
 
-Adding Type to the model raised R² from 0.107 to 0.246, meaning the model now explains about 25% of Score's variation, up from about 10% before. This is still a minority of what drives Score about 75% remains unexplained but adding Type clearly improved the model. Once Type was included, Episodes' effect became statistically insignificant (p = 0.477, compared to p < 0.001 before), suggesting its earlier weak correlation wasn't a real independent effect it was likely picking up on the fact that TV series tend to have more episodes than Movies, which also happen to score higher. Every Type category scored lower than TV (the baseline), with Movie showing the largest gap (1.06 points) and Special showing the smallest (0.43 points)
+Interpretation: Adding Type to the model raised R² from 0.107 to 0.246, meaning the model now explains about 25% of Score's variation, up from about 10% before. This is still a minority of what drives Score about 75% remains unexplained but adding Type clearly improved the model. Once Type was included, Episodes' effect became statistically insignificant (p = 0.477, compared to p < 0.001 before), suggesting its earlier weak correlation wasn't a real independent effect it was likely picking up on the fact that TV series tend to have more episodes than Movies, which also happen to score higher. Every Type category scored lower than TV (the baseline), with Movie showing the largest gap (1.06 points) and Special showing the smallest (0.43 points)
 
-❔Question: 
+reasoned prediction: I expected Type to add meaningful explanatory power, since my earlier group comparison already showed TV scoring noticeably higher than other types.
+
+❔Question: Does adding Genre (Mystery, Suspense) improve the model's explanatory power beyond Episodes, Duration, and Type?
+
+
+ Method: Multiple Linear Regression (OLS, via `statsmodels`) predictors: Episodes, Duration_minute, and Type(Movie/Music/OVA/ONA/Special, TV as baseline)
+
+Result: R²=0.253. basically unchanged.
+
+
+Interpretation: R² moved from 0.246 to 0.253, meaning Genre added very little beyond what Type already explained. Mystery and Suspense both had p-values of 0.00 and positive coefficients, meaning genre content adds a real effect on Score, independent of format and length
+
+
+
+reasoned prediction: I expected Mystery and Suspense to remain significant predictors even after controlling for Type and Duration, since my earlier genre analysis showed both scoring above average independent of format
 
 
 
