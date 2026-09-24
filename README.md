@@ -80,6 +80,19 @@ Result: 6.38 overall average
 
 Interpretation: here `Award Winning` at (7.29) tops from other genre  but this reflects prior recognition rather than genre content, so it's not treated as a meaningful genre-level finding. `Mystery` at (6.99),and `Suspense` at (6.96) are actual genre  hits over other genre, my hypothesis about `Slice of Life` 6.47 was wrong it ranks 16 out of 21, in overall average but `Suspense` ranks third top making my half hypothesis true.
 
+
+Does Type (TV vs Movie vs OVA, etc.) relate to `Score`, are movies rated differently than `TV` series?
+
+
+Hypothesis: i think yes, scoring is affected by its type, TV series are often popular than others.
+
+Method: `groupby()` and `mean()`
+
+Result: highest - `TV`(6.84) and lowest- `music` (5.86)
+
+Interpretation: after doing some checks I'm confirming that my Hypothesis was accurate. By members being for TV 92545, a difference 95x in compare to music only being 976, followed by Movie with a distant third at 23074.
+
+
 ❔Question: Does Studios matter — do certain studios' anime average higher scores?
 
 
