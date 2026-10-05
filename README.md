@@ -148,7 +148,8 @@ Interpretation: R² moved from 0.246 to 0.253, meaning Genre added very little b
 reasoned prediction: I expected `Mystery` and `Suspense` to remain significant predictors even after controlling for Type and Duration, since my earlier genre analysis showed both scoring above average independent of format
 
 ## Data Visualization:
-![Uploading Screenshot 2026-10-05 at 5.07.23 PM.png…]()
+Interactive dashboards for this analysis were built in Tableau and can be explored here:
+
 
 
 
