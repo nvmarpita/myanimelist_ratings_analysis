@@ -26,7 +26,7 @@ Sourced from MyAnimeList — the go-to hub for anime fans and one of the richest
 - Addressed the `English name` column, where ~58% of values were `"UNKNOWN"` rather than true nulls, by imputing with the corresponding `Name` value using `.fillna(df['Name'])`
 - `Aired` was stored as text instead of datetime, which was fixed with `pd.to_datetime` and few end-date had '?' as they were still being aired, handled by replacing with NaN. the column was split into as `Aired_start` and `Aired_end` for better analysis and view
 -  Genres stored multiple values in one text field (e.g. `"Action, Adventure, Fantasy")`, which isn't useable for filtering, grouping, or analysis directly. Used `get_dummies()` to one-hot encode it into one boolean column per genre (~20 new columns total, e.g. `Action`, `Comedy`, `Drama`). Each column holds 1 if the anime belongs to that genre and 0 if it doesn't and since an anime can belong to multiple genres at once, a single row can have several 1s across different genre columns. Eg: Cowboy Bebop has Action = 1 and Sci-Fi = 1 simultaneously, reflecting that it belongs to both genres.
-## Data Analysis:
+## 🔍 Data Analysis:
 Unlike [Olist/Startup Funding], which focused on [SQL-based trend/aggregation analysis], this project uses CORRELATION AND REGRESSION to test specific hypotheses about what drives an anime's reception moving from describing the data to explaining
 relationships within it
 
@@ -151,13 +151,13 @@ reasoned prediction: I expected `Mystery` and `Suspense` to remain significant p
 Interactive dashboards for this analysis were built in Tableau and can be explored here:
 https://public.tableau.com/app/profile/arpita.gupta4384/viz/MyAnimelistRating/Dashboard1
 
-Out of 24,831 of entries, 15,691 have a score, with the mean value of 6.38
+- Out of 24,831 entries, 15,691 have a score, with the mean value of 6.38
 
-TV dominates the list, with 7,597 TV-titles.
+- TV dominates the list, with 7,597 TV-titles.
 
-The most common genres are Comedy, Fantasy, Action
+- The most common genres are Comedy, Fantasy, Action
 
-There is a limited relationship between score and popularity: member's count explains approximately 15% of the score variance (R² = 0.15), meaning that a higher volume of members generally does not equal a higher score.
+- There is a limited relationship between score and popularity: member's count explains approximately 15% of the score variance (R² = 0.15), meaning that a higher volume of members generally does not equal a higher score.
 
 ## Why I did it
 
