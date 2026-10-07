@@ -149,8 +149,18 @@ reasoned prediction: I expected `Mystery` and `Suspense` to remain significant p
 
 ## Data Visualization:
 Interactive dashboards for this analysis were built in Tableau and can be explored here:
+https://public.tableau.com/app/profile/arpita.gupta4384/viz/MyAnimelistRating/Dashboard1
 
+Out of 24,831 of entries, 15,691 have a score, with the mean value of 6.38
 
+TV dominates the list, with 7,597 TV-titles.
 
+The most common genres are Comedy, Fantasy, Action
+
+There is a limited relationship between score and popularity: member's count explains approximately 15% of the score variance (R² = 0.15), meaning that a higher volume of members generally does not equal a higher score.
+
+## Why I did it
+
+I am expanding my data analytics portfolio and thought that a project with a comprehensive data exploration would be beneficial for me. I aimed for quantity, diversity, and quality: a complete statistical analysis, dashboard, and explicit consideration of data limitations. I have acknowledged potential improvements, such as the lack of information for 74 titles with unknown Type: and the fact that a title can have more than one genre. All these factors are indicated in the dashboard.
 
 
